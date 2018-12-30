@@ -26,8 +26,8 @@ class Parser extends EventEmitter {
 
     let chunk_split: Array<string> = chunk.split('\n\n')
     
-    this.message = chunk_split.pop()
-    chunk_split.forEach(function(piece: string) {
+    this.message = chunk_split.pop() as string
+    for (var piece in chunk_split) {
       if (!piece.length) continue // empty object
 
       const root: Array<string> = piece.split('\n')
@@ -61,7 +61,7 @@ class Parser extends EventEmitter {
       } finally {
         continue
       }
-    })
+    }
   }
 }
 
